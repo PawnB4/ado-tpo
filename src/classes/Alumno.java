@@ -7,10 +7,9 @@ public class Alumno {
 
     private String nombre, apellido;
     private Carrera carrera;
-
     private ArrayList<Materia> materiasAprobadas;
     private ArrayList<Curso> cursosInscriptosCuatrimestre;
-    private double balanceCuenta;
+    private double montoCuota;
     private int LU;
 
     public Alumno(String nombre, String apellido, int LU) {
@@ -18,7 +17,7 @@ public class Alumno {
         this.apellido = apellido;
         this.carrera = null;
         this.cursosInscriptosCuatrimestre = new ArrayList<Curso>();
-        this.balanceCuenta = 0;
+        this.montoCuota = 0;
         this.LU = LU;
         this.materiasAprobadas = new ArrayList<Materia>();
     }
@@ -43,16 +42,15 @@ public class Alumno {
         return this.carrera;
     }
 
-    public double obtenerBalance() {
-        return this.balanceCuenta;
+    public double obtenerMontoProximaFactura() {
+        return this.montoCuota;
     }
 
-    public void restarSaldo(double saldo) {
-        this.balanceCuenta -= saldo;
-    }
-
-    public void aumentarSaldo(double saldo) {
-        this.balanceCuenta += saldo;
+    public void calcularMontoProximaFactura() {
+        montoCuota = 0;
+        for (Curso curso : cursosInscriptosCuatrimestre) {
+            montoCuota += curso.obtenerPrecioCuota();
+        }
     }
 
     public ArrayList<Materia> obtenerMateriasAprobadas() {
@@ -91,7 +89,7 @@ public class Alumno {
                 ", carrera=" + checkCarrera
                 +
                 ", cursos inscriptos =[" + cursosStr + "]" +
-                ", balanceCuenta=" + balanceCuenta +
+                ", monto cuota=" + montoCuota +
                 ", LU=" + LU +
                 '}';
     }

@@ -1,5 +1,6 @@
-package classes;
+package controllers;
 
+import classes.Profesor;
 import interfaces.IGeneradorReportes;
 
 public class ReportesController {

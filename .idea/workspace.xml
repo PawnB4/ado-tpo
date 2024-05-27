@@ -4,33 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="375446a0-02b7-433b-89e5-06ecef0356a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ADO_TPO.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Alumno.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Aula.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Carrera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/CarrerasManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Curso.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/CursosManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/GeneradorReportes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Horario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Materia.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/MercadoPago.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/PagosController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/Profesor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/ReportesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/InscripcionException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exceptions/PagoException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/IGeneradorReportes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/interfaces/IProcesadorPagos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tests/InscripcionesTest.java" afterDir="false" />
+    <list default="true" id="375446a0-02b7-433b-89e5-06ecef0356a6" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/src/classes/AlumnoManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/AulaManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/CursoManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/MateriaManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/ProfesorManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/AlumnoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/AulaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/CarreraController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/CursoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/InscripcionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/MateriaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controllers/ProfesorController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enums/Turno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Alumno.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Alumno.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Carrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CarrerasManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CarreraManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Curso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Curso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CursosManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/InscripcionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/GeneradorReportes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/GeneradorReportes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Horario.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/MercadoPago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/MercadoPago.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/PagosController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/Profesor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/Profesor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/ReportesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ReportesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/interfaces/IProcesadorPagos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/interfaces/IProcesadorPagos.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +43,7 @@
       <list>
         <option value="Record" />
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -114,11 +116,25 @@
       <workItem from="1714247136520" duration="17766000" />
       <workItem from="1714278666686" duration="151000" />
       <workItem from="1714278823435" duration="7926000" />
-      <workItem from="1714335154058" duration="6507000" />
+      <workItem from="1714335154058" duration="8173000" />
+      <workItem from="1716678822671" duration="29905000" />
     </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1714344517699</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1714344517699</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
 </project>

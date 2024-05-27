@@ -1,5 +1,10 @@
 package classes;
 
+import enums.Turno;
+
+import java.time.DayOfWeek;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
@@ -8,21 +13,42 @@ public class Curso {
     private int idCurso;
     private Aula aula;
     private Materia materia;
-    private Horario horario;
     private ArrayList<Profesor> profesores;
     private ArrayList<Alumno> alumnos;
     private double precioCuota;
+    private DayOfWeek dia;
+    private Turno turno;
+    private LocalTime horaInicio;
+    private LocalTime horaFin;
+    private Duration duracion;
 
 
-    public Curso(Aula aula, Materia materia, Horario horario, double precioCuota) {
-        this.idCurso = Curso.contador;
+    public Curso(Aula aula, Materia materia, double precioCuota, DayOfWeek dia, Turno turno) {
         ++Curso.contador;
+        this.idCurso = Curso.contador;
         this.aula = aula;
         this.materia = materia;
-        this.horario = horario;
         this.profesores = new ArrayList<Profesor>();
         this.alumnos = new ArrayList<Alumno>();
         this.precioCuota = precioCuota;
+        this.dia = dia;
+        this.turno = turno;
+        calcularTurno(turno);
+    }
+
+    private void calcularTurno(Turno turno) {
+        if (turno.equals(Turno.MANANA)) {
+            this.horaInicio = LocalTime.of(7, 45);
+            this.horaFin = LocalTime.of(11, 45);
+
+        } else if (turno.equals(Turno.TARDE)) {
+            this.horaInicio = LocalTime.of(14, 0);
+            this.horaFin = LocalTime.of(18, 0);
+        } else {
+            this.horaInicio = LocalTime.of(18, 30);
+            this.horaFin = LocalTime.of(22, 30);
+        }
+        this.duracion = Duration.between(horaInicio, horaFin);
     }
 
     public ArrayList<Profesor> obtenerProfesores() {
@@ -57,8 +83,20 @@ public class Curso {
         return this.aula;
     }
 
-    public Horario obtenerHorario() {
-        return horario;
+    public DayOfWeek obtenerDia() {
+        return this.dia;
+    }
+
+    public Turno obtenerTurno() {
+        return this.turno;
+    }
+
+    public long obtenerCantidadHoras() {
+        return this.duracion.toHours();
+    }
+
+    public String obtenerHorario() {
+        return dia + "-" + turno;
     }
 
     public int obtenerId() {
@@ -69,24 +107,23 @@ public class Curso {
         return this.precioCuota;
     }
 
+    public void setPrecioCuota(double nuevoValor) {
+        this.precioCuota = nuevoValor;
+        notificarAlumnos();
+    }
+
+    private void notificarAlumnos() {
+        for (Alumno alumno : alumnos) {
+            alumno.calcularMontoProximaFactura();
+        }
+    }
+
     @Override
     public String toString() {
-        String profesoreStr = profesores.stream()
-                .map(p -> p.getNombre() + " " + p.getApellido())
-                .collect(Collectors.joining(", "));
-        String alumnosStr = alumnos.stream()
-                .map(a -> a.getNombre() + " " + a.getApellido())
-                .collect(Collectors.joining(", "));
+        String profesoreStr = profesores.stream().map(p -> p.getNombre() + " " + p.getApellido()).collect(Collectors.joining(", "));
+        String alumnosStr = alumnos.stream().map(a -> a.getNombre() + " " + a.getApellido()).collect(Collectors.joining(", "));
 
-        return "Curso{" +
-                "idCurso=" + idCurso +
-                ", aula=" + aula +
-                ", materia=" + materia.obtenerNombre() +
-                ", horario=" + horario +
-                ", profesores=[" + profesoreStr + "]" +
-                ", alumnos=[" + alumnosStr + "]" +
-                ", precio=" + precioCuota +
-                '}'+"\n";
+        return "Curso{" + "idCurso=" + idCurso + ", aula=" + aula + ", materia=" + materia.obtenerNombre() + ", horario=" + dia + "-" + turno + ", profesores=[" + profesoreStr + "]" + ", alumnos=[" + alumnosStr + "]" + ", precio=" + precioCuota + '}' + "\n";
     }
 
 

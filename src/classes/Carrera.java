@@ -13,8 +13,8 @@ public class Carrera {
     private ArrayList<Materia> materias;
 
     public Carrera(String nombreCarrera, int horasMaximasPorCuatrimestre) {
-        this.idCarrera = Carrera.contador;
         ++Carrera.contador;
+        this.idCarrera = Carrera.contador;
         this.nombreCarrera = nombreCarrera;
         this.horasMaximasPorCuatrimestre = horasMaximasPorCuatrimestre;
         this.materias = new ArrayList<Materia>();
@@ -28,12 +28,20 @@ public class Carrera {
         materias.add(materia);
     }
 
+    public void eliminarMateria(Materia materia) {
+        materias.remove(materia);
+    }
+
     public int obtenerMaximoHoras() {
         return horasMaximasPorCuatrimestre;
     }
 
-    public String obtenerNombre(){
+    public String obtenerNombre() {
         return this.nombreCarrera;
+    }
+
+    public int obtenerIdCarrera() {
+        return this.idCarrera;
     }
 
     @Override

@@ -4,35 +4,25 @@ import exceptions.PagoException;
 import interfaces.IProcesadorPagos;
 
 public class MercadoPago implements IProcesadorPagos {
-    public void procesarPago(Alumno alumno) {
+    public void procesarPago(Alumno alumno, double monto) {
         try {
-            validarPago(alumno);
-            realizarPago(alumno);
+            validarPago(alumno, monto);
+            realizarPago();
         } catch (PagoException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    private void realizarPago(Alumno alumno) {
-        alumno.restarSaldo(calcularCostoTotalCuatrimestre(alumno));
-        System.out.println("Pago realizado con éxito");
+    private void realizarPago() {
+        System.out.println("Pago realizado con éxito con Mercado Pago");
     }
 
-    private void validarPago(Alumno alumno) throws PagoException {
-        double suma = calcularCostoTotalCuatrimestre(alumno);
-        if (suma > alumno.obtenerBalance()) {
-            throw new PagoException("El alumno no cuenta con el balance suficiente para abonar la primer cuota de cada curso al cual está inscripto.\n" +
-                    "Total a pagar: $" + suma + "\n" +
-                    "Balance del alumno: $" + alumno.obtenerBalance()
+    private void validarPago(Alumno alumno, double monto) throws PagoException {
+        if (monto < alumno.obtenerMontoProximaFactura()) {
+            throw new PagoException("El monto proporcionado no es suficiente para abonar la primer cuota de cada curso al cual está inscripto.\n" +
+                    "Total a pagar: $" + alumno.obtenerMontoProximaFactura() + "\n" +
+                    "Monto proporcionado: $" + monto
             );
         }
-    }
-
-    private double calcularCostoTotalCuatrimestre(Alumno alumno) {
-        double suma = 0;
-        for (Curso c : alumno.obtenerCursosInscriptos()) {
-            suma += c.obtenerPrecioCuota();
-        }
-        return suma;
     }
 }

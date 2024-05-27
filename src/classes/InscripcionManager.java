@@ -3,34 +3,28 @@ package classes;
 import exceptions.InscripcionException;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
-public class CursosManager {
-    private ArrayList<Curso> cursos;
+public class InscripcionManager {
+
     private LocalDate fechaMaximaInscripcion;
 
-    public CursosManager(LocalDate fechaMaximaInscripcion) {
-        this.cursos = new ArrayList<Curso>();
+    public InscripcionManager() {
+    }
+
+
+    public void setFechaMaximaInscripcion(LocalDate fechaMaximaInscripcion) {
         this.fechaMaximaInscripcion = fechaMaximaInscripcion;
     }
 
-    public Curso crearCurso(Aula aula, Materia materia, Horario horario, double precio) {
-        Curso nuevoCurso = new Curso(aula, materia, horario, precio);
-        this.cursos.add(nuevoCurso);
-        return nuevoCurso;
-    }
-
-    public void agregarProfesorACurso(Profesor profesor, Curso curso) {
-        if (!curso.obtenerProfesores().contains(profesor)) {
-            curso.agregarProfesor(profesor);
-            profesor.agregarCurso(curso);
+    public void inscribirAlumnoACarrera(Alumno alumno, Carrera carrera) {
+        if (alumno.obtenerCarrera() == null) {
+            alumno.inscribirACarrera(carrera);
         }
     }
 
-    public void eliminarProfesorDeCurso(Profesor profesor, Curso curso) {
-        if (curso.obtenerProfesores().contains(profesor)) {
-            curso.eliminarProfesor(profesor);
-            profesor.eliminarCurso(curso);
+    public void eliminarAlumnoDeCarrera(Alumno alumno) {
+        if (alumno.obtenerCarrera() != null) {
+            alumno.salirDeCarrera();
         }
     }
 
@@ -78,14 +72,6 @@ public class CursosManager {
         }
     }
 
-    private int calcularTotalDeHoras(Alumno alumno, Curso curso) {
-        int horas = curso.obtenerMateria().obtenerCantidadDeHoras();
-        for (Curso c : alumno.obtenerCursosInscriptos()) {
-            horas += c.obtenerMateria().obtenerCantidadDeHoras();
-        }
-        return horas;
-    }
-
     public void eliminarAlumnoDeCurso(Alumno alumno, Curso curso) {
         if (curso.obtenerAlumnos().contains(alumno)) {
             curso.eliminarAlumno(alumno);
@@ -93,18 +79,13 @@ public class CursosManager {
         }
     }
 
-    public void mostrarTodosLosCursos() {
-        System.out.println(cursos);
-    }
 
-    public ArrayList<Curso> mostrarCursosPorMateria(Materia materia) {
-        ArrayList<Curso> cursosFiltrados = new ArrayList<Curso>();
-        for (Curso curso : cursos) {
-            if (curso.obtenerMateria().obtenerId() == materia.obtenerId()) {
-                cursosFiltrados.add(curso);
-            }
+    private int calcularTotalDeHoras(Alumno alumno, Curso curso) {
+        int horas = curso.obtenerMateria().obtenerCantidadDeHoras();
+        for (Curso c : alumno.obtenerCursosInscriptos()) {
+            horas += c.obtenerMateria().obtenerCantidadDeHoras();
         }
-        return cursosFiltrados;
+        return horas;
     }
 
 }
