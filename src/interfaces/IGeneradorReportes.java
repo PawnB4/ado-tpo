@@ -5,5 +5,5 @@ import classes.Curso;
 import java.util.ArrayList;
 
 public interface IGeneradorReportes {
-    void generarPDF(ArrayList<Curso> cursos);
+    void generarReporte(ArrayList<Curso> cursos);
 }

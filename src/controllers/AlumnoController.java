@@ -1,7 +1,7 @@
 package controllers;
 
-import classes.Alumno;
-import classes.AlumnoManager;
+import classes.*;
+import interfaces.IProcesadorPagos;
 
 public class AlumnoController {
 
@@ -23,8 +23,17 @@ public class AlumnoController {
         this.alumnoManager.crearAlumno(nombre, apellido, LU);
     }
 
-    public Alumno buscarAlumno(int LU){
+    public Alumno buscarAlumno(int LU) {
         return this.alumnoManager.buscarAlumno(LU);
+    }
+
+    public void abonarCuotaMensual(int LU, double monto, String medioDePago) {
+        Alumno alumno = buscarAlumno(LU);
+        if (alumno == null) {
+            System.out.println("El ID proporcionado no corresponde con un alumno existente");
+            return;
+        }
+        PagoController.getInstance().abonarCuotaMensual(medioDePago, alumno.obtenerMontoProximaFactura(), monto);
     }
 
 

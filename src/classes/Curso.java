@@ -51,6 +51,10 @@ public class Curso {
         this.duracion = Duration.between(horaInicio, horaFin);
     }
 
+    public int obtenerCantidadAlumnosInscriptos() {
+        return alumnos.size();
+    }
+
     public ArrayList<Profesor> obtenerProfesores() {
         return profesores;
     }
@@ -109,14 +113,8 @@ public class Curso {
 
     public void setPrecioCuota(double nuevoValor) {
         this.precioCuota = nuevoValor;
-        notificarAlumnos();
     }
 
-    private void notificarAlumnos() {
-        for (Alumno alumno : alumnos) {
-            alumno.calcularMontoProximaFactura();
-        }
-    }
 
     @Override
     public String toString() {

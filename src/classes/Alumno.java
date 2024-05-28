@@ -43,10 +43,11 @@ public class Alumno {
     }
 
     public double obtenerMontoProximaFactura() {
+        recalcularMontoProximaFactura();
         return this.montoCuota;
     }
 
-    public void calcularMontoProximaFactura() {
+    private void recalcularMontoProximaFactura() {
         montoCuota = 0;
         for (Curso curso : cursosInscriptosCuatrimestre) {
             montoCuota += curso.obtenerPrecioCuota();

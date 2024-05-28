@@ -40,7 +40,7 @@ public class Profesor {
     public long calcularCantidadDeHorasAsignadasMensuales() {
         long cantidadHoras = 0;
         for (Curso curso : cursos) {
-            cantidadHoras += curso.obtenerCantidadHoras();
+            cantidadHoras += curso.obtenerMateria().obtenerCantidadDeHoras();
         }
         return cantidadHoras;
     }

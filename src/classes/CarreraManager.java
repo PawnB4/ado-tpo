@@ -33,7 +33,7 @@ public class CarreraManager {
         }
     }
 
-    public void mostrarTodasLasCarreraas() {
+    public void mostrarTodasLasCarreras() {
         for (Map.Entry<Integer, Carrera> entry : carreras.entrySet()) {
             int id = entry.getKey();
             String nombre = entry.getValue().obtenerNombre();

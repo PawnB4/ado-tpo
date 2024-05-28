@@ -34,6 +34,16 @@ public class CursoManager {
         System.out.println(cursosFiltrados);
     }
 
+    public HashMap<Integer, Integer> obtenerInscriptosParaCadaCurso() {
+        HashMap<Integer, Integer> inscriptosPorCurso = new HashMap<Integer, Integer>();
+        for (Map.Entry<Integer, Curso> entry : cursos.entrySet()) {
+            int idCurso = entry.getKey();
+            int cantidadAlumnos = entry.getValue().obtenerCantidadAlumnosInscriptos();
+            inscriptosPorCurso.put(idCurso, cantidadAlumnos);
+        }
+        return inscriptosPorCurso;
+    }
+
     public void buscarCursosPorTurno(DayOfWeek dia, Turno turno) {
         ArrayList<Curso> cursosFiltrados = new ArrayList<>();
         for (Curso curso : cursos.values()) {
@@ -43,7 +53,6 @@ public class CursoManager {
         }
         System.out.println("RESULTADOS DE BUSQUEDA PARA: " + dia + " - " + turno);
         System.out.println(cursosFiltrados);
-
     }
 
     public void agregarProfesorACurso(Profesor profesor, Curso curso) {
@@ -69,10 +78,6 @@ public class CursoManager {
             profesor.eliminarCurso(curso);
             profesor.agregarDisponibilidad(dia, turno);
         }
-    }
-
-    public void actualizarValorCuotaDeCuso(double nuevoValor, Curso curso) {
-        curso.setPrecioCuota(nuevoValor);
     }
 
 

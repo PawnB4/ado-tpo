@@ -28,21 +28,4 @@ public class MateriaManager {
         }
     }
 
-    public void agregarMateriaCorrelativaPrevia(Materia materia, Materia materiaCorrelativaPrevia) {
-        materia.agregarMateriaCorrelativaPrevia(materiaCorrelativaPrevia);
-    }
-
-    public void agregarMateriaCorrelativaPosterior(Materia materia, Materia materiaCorrelativaPosterior) {
-        materia.agregarMateriaCorrelativaPosterior(materiaCorrelativaPosterior);
-    }
-
-    public ArrayList<Materia> obtenerCorrelativasPrevias(Materia materia) {
-        return materia.obtenerCorrelativasPrevias();
-    }
-
-    public ArrayList<Materia> obtenerCorrelativasPosteriores(Materia materia) {
-        return materia.obtenerCorrelativasPosteriores();
-    }
-
-
 }
